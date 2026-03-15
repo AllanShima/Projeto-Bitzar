@@ -32,6 +32,8 @@ This project was created using `bun init` in bun v1.3.10. [Bun](https://bun.com)
 - Instale as dependencias do projeto: "bun install"
 - Sempre que quiser rodar: "bun dev"
 
+#### Hosteando: https://bitzar-docpilot.web.app
+
 ---
 
 #### Extesões e Libraries
