@@ -38,3 +38,21 @@ This project was created using `bun init` in bun v1.3.10. [Bun](https://bun.com)
 - bun install firebase
 - bun install -g firebase-tools
 - bun install react-icons --save
+
+---
+
+#### Arquitetura utilizada
+Pra organizar os componentes, hooks e fetch calls do firebase. Foi utilizado uma Arquitetura Baseada em Features
+- Onde cada pasta representa o que ela faz:
+
+src/
+├── assets/          # Static files (images, fonts)
+├── config/          # Firebase config, LLM API constants
+├── features/        # The core of your app
+│   ├── auth/        # Login, Signup, Auth hooks
+│   ├── chat/        # LLM integration, Message components, Streaming logic
+│   └── dashboard/   # Data fetching, User stats
+├── hooks/           # Global reusable hooks (e.g., useLocalStorage)
+├── services/        # Firebase & API fetch wrappers (The "Data Layer")
+├── ui/              # Generic Tailwind components (Buttons, Inputs, Modals)
+└── utils/           # Helper functions (Date formatting, String parsing)
