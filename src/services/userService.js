@@ -14,9 +14,9 @@ export const userService = {
 
     return await addDoc(userRef, 
         { 
-            id: documentId, 
-            userData: userData,
-            createdAt: new Date() 
+          id: documentId, 
+          userData: userData,
+          createdAt: new Date() 
         }
     );
   },
@@ -28,5 +28,5 @@ export const userService = {
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   },
   
-  // Update/Delete...
+  // Update/Delete/GetAll...
 };

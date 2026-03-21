@@ -23,9 +23,9 @@ export const fileService = {
 
     return await addDoc(fileRef, 
         { 
-            id: documentId, 
-            fileData: fileData, 
-            createdAt: new Date() 
+          id: documentId, 
+          fileData: fileData, 
+          createdAt: new Date() 
         }
     );
   },
@@ -37,5 +37,9 @@ export const fileService = {
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   },
   
+  // Leitura de Todos os arquivos
+  async GetAllFiles() {
+
+  }
   // Update/Delete...
 };

@@ -23,11 +23,11 @@ const ChatPage = () => {
 
         </div>
         {/* Inner Footer (User Input) */}
-        <div className='flex flex-col w-full h-fit p-4 rounded-b-2xl bg-linear-to-r from-sky-50 to-fuchsia-50'>
-          <span className='flex'>
+        <div className='flex flex-col w-full h-fit p-4 gap-2 rounded-b-2xl bg-linear-to-r from-sky-50 to-fuchsia-50'>
+          <span className='flex gap-3'>
             <input type="text"  className='flex w-full p-4 bg-gray-100 rounded-2xl'/>
-            <div className='flex w-20 h-full p-4 bg-linear-to-r from-sky-200 to-fuchsia-200 rounded-2xl'>
-              <IoIosSend/>
+            <div className='flex w-fit h-full p-4 items-center justify-center bg-linear-to-r from-sky-300 to-fuchsia-300 rounded-2xl'>
+              <IoIosSend className='w-6 h-6'/>
             </div>            
           </span>
 

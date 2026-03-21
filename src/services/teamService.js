@@ -14,9 +14,9 @@ export const teamService = {
 
     return await addDoc(teamRef, 
         { 
-            id: documentId, 
-            teamData: teamData,
-            createdAt: new Date() 
+          id: documentId, 
+          teamData: teamData,
+          createdAt: new Date() 
         }
     );
   },
@@ -28,5 +28,5 @@ export const teamService = {
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   },
   
-  // Update/Delete...
+  // Update/Delete/GetAll...
 };
