@@ -42,6 +42,8 @@ This project was created using `bun init` in bun v1.3.10. [Bun](https://bun.com)
 - bun install react-icons --save
 - bun install react-router
 
+- npm install --save-dev jsdoc
+
 ---
 
 #### Arquitetura utilizada

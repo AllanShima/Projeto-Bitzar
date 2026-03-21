@@ -1,6 +1,15 @@
 import { db } from '../config/firebase';
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 
+// Comentários pra gerar documento em JSDoc
+/**
+ * Retrieves a user by email.
+ * @async
+ * @param {string} email - The user's email address.
+ * @returns {User} The user object.
+ * @throws {NotFoundError} If the user is not found.
+*/
+
 // Referência da pasta
 const fileRef = collection(db, 'teams', "files");
 

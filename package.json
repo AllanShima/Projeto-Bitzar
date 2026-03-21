@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "docs": "jsdoc -c jsdoc.json",
     "dev": "bun --hot src/index.ts",
     "start": "NODE_ENV=production bun src/index.ts",
     "build": "bun run build.ts"
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@types/bun": "latest",
     "@types/react": "^19",
-    "@types/react-dom": "^19"
+    "@types/react-dom": "^19",
+    "jsdoc": "^4.0.5"
   }
 }
