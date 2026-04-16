@@ -1,8 +1,5 @@
 import { APITester } from "./APITester";
 import "./index.css";
-
-import logo from "./logo.svg";
-import reactLogo from "./react.svg";
 import { createBrowserRouter, Navigate, Outlet } from "react-router"; // Criador de Router
 import { RouterProvider } from "react-router/dom"; // Renderizador
 import LandingPage from "./pages/LandingPage";
@@ -11,8 +8,8 @@ import HomeHeader from "./pages/HomeHeader";
 import ChatPage from "./pages/ChatPage";
 import ArchivePage from "./pages/ArchivePage";
 import Login from "./pages/Login";
-
-
+import TeamInfoPage from "./pages/TeamInfoPage";
+import Register from "./pages/Register";
 
 export function App() {
   
@@ -45,16 +42,24 @@ export function App() {
           path: 'archive',
           element: <ArchivePage/>
         },
+        {
+          path: 'info',
+          element: <TeamInfoPage/>
+        },
       ]
     },
     {
       path: '/login',
       element: <Login/>
     },
+    {
+      path: '/register',
+      element: <Register/>
+    },
   ]);
 
   return (
-    <div className="flex flex-col w-screen h-screen">
+    <div className="flex flex-col w-screen h-screen bg-gray-100">
       <RouterProvider router={mainRouter} />
     </div>
   );

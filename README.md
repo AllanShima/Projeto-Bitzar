@@ -36,7 +36,8 @@ bun start
 - bun install -g firebase-tools
 - bun install react-icons --save
 - bun install react-router
-
+- bun install @headlessui/react
+- bun install react-hot-toast
 - npm install --save-dev jsdoc
 
 ---

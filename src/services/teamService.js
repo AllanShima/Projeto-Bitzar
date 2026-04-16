@@ -1,6 +1,15 @@
 import { db } from '../config/firebase';
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 
+/**
+ * @typedef {Object} Team
+ * @property {string} id - O ID único do usuário no Firebase Auth.
+ * @property {string} firstName - Primeiro nome.
+ * @property {string} lastName - Sobrenome.
+ * @property {string} email - Endereço de e-mail.
+ * @property {number} balance - Saldo atual da conta.
+ */
+
 // Referência da pasta
 const teamRef = collection(db, 'teams');
 
