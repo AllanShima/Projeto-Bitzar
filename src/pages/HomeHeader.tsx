@@ -1,27 +1,38 @@
-import React, { useEffect, useState, type MouseEvent, type SubmitEvent } from 'react'
+import React, { useEffect, useState, type Dispatch, type MouseEvent, type SetStateAction, type SubmitEvent } from 'react'
 import { IoIosChatboxes } from "react-icons/io";
 import { FaFileAlt } from "react-icons/fa";
 import { CgEnter } from "react-icons/cg";
 import { RiTeamFill } from "react-icons/ri";
-import NavLinkTab from '@/ui/NavLinkTab';
+import NavLinkTab from '@/ui/TabButton';
 import { auth } from '@/config/firebase';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router';
 import { signOut } from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
+import { MdExitToApp } from "react-icons/md";
+import TabButton from '@/ui/TabButton';
 
-const HomeHeader = () => {
+interface HomeHeaderProps {
+    activeTab: string,
+    setActiveTab: Dispatch<SetStateAction<string>>
+}
+
+const HomeHeader = ({activeTab, setActiveTab} : HomeHeaderProps) => {
     const navigate = useNavigate();
 
     const handleLogout = async (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault(); // Opcional, mas evita comportamentos inesperados
-    try {
-        await signOut(auth);
-        toast.success("Usuário deconectado com sucesso!");
-        // O seu onAuthStateChanged (que vimos antes) cuidará do redirecionamento
-        navigate("/login");
-    } catch (error) {
-        console.error("Erro ao sair:", error);
-    }
+        e.preventDefault(); // Opcional, mas evita comportamentos inesperados
+        try {
+            await signOut(auth);
+            toast.success("Usuário deconectado com sucesso!");
+            // onAuthStateChanged cuidaria do redirecionamente automaticamente
+            navigate("/login");
+        } catch (error) {
+            console.error("Erro ao sair:", error);
+            if (error instanceof FirebaseError) {
+                toast.error(error.message);
+            }
+        }
     };
     return (
         <nav className='flex w-full h-20 min-h-20 max-h-20 py-2.5 px-10 items-center bg-linear-to-r from-sky-500 to-fuchsia-500 shadow-lg'>
@@ -35,9 +46,27 @@ const HomeHeader = () => {
 
                 {/* Tab buttons */}
                 <div className='flex w-fit h-3/4 gap-1 my-auto'>
-                    <NavLinkTab to="chat" activeColor="text-sky-500" label="Chat" Icon={IoIosChatboxes}/>
-                    <NavLinkTab to="archive" activeColor="text-fuchsia-500" label="Arquivos" Icon={FaFileAlt}/>
-                    <NavLinkTab to="info" activeColor="text-fuchsia-700" label="Configurações" Icon={RiTeamFill}/>
+                    <TabButton 
+                        onClick={() => setActiveTab('chat')} 
+                        isActive={activeTab === 'chat'}
+                        activeColor="text-sky-500" 
+                        label="Chat" 
+                        Icon={IoIosChatboxes}
+                    />
+                    <TabButton 
+                        onClick={() => setActiveTab('archive')} 
+                        isActive={activeTab === 'archive'}
+                        activeColor="text-fuchsia-500" 
+                        label="Arquivos" 
+                        Icon={FaFileAlt}
+                    />
+                    <TabButton 
+                        onClick={() => setActiveTab('info')} 
+                        isActive={activeTab === 'info'}
+                        activeColor="text-fuchsia-700" 
+                        label="Configurações" 
+                        Icon={RiTeamFill}
+                    />
                 </div>
                 <span className='flex gap-4'>
                     {/* User Type indicator */}
@@ -52,7 +81,8 @@ const HomeHeader = () => {
                     {/* Leave button */}
                     <div className='flex w-fit h-3/4 gap-1 my-auto'>
                         {/* Chat Tab button*/}
-                        <button onClick={(e) => handleLogout(e)} className='bg-amber-400'>
+                        <button onClick={(e) => handleLogout(e)} className='flex my-auto h-fit w-fit px-3 py-1 rounded-xl hover:bg-fuchsia-600 transition'>
+                            <MdExitToApp className='my-auto mr-2 w-5 h-5'/>
                             Sair
                         </button>
                     </div>                    

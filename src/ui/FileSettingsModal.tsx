@@ -1,14 +1,23 @@
 import React, { useState, type Dispatch, type SetStateAction } from 'react'
 import { DialogBackdrop, DialogPanel } from '@headlessui/react'
 import UserInput from './UserInput'
+import type { File } from '@/interfaces/Interfaces'
+import toast from 'react-hot-toast'
 
 interface FileModalProp {
+    fileInfo: File,
     setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
-const FileSettingsModal = ({setIsOpen} : FileModalProp) => {
+const FileSettingsModal = ({fileInfo, setIsOpen} : FileModalProp) => {
     const [fileName, setFileName] = useState('');
     const [fileDesctiption, setFileDescription] = useState('');
+
+    const handleNewFile = () => {
+        toast.success("Novo arquivo inserido!");
+        setIsOpen(false)
+    }
+
     return (
         <>
             <DialogBackdrop
@@ -30,13 +39,13 @@ const FileSettingsModal = ({setIsOpen} : FileModalProp) => {
                                 Nome do Arquivo
                             </label>
                             <div className='flex w-full h-9'>
-                                <UserInput state={fileName} setState={(e) => setFileName(e.target.value)} placeholder='Manual de processos.pdf'/>                                
+                                <UserInput state={fileName} setState={setFileName} placeholder={fileInfo.name}/>                                
                             </div>
                             <label className='text-black font-medium'>
                                 Descrição
                             </label>
                             <div className='flex w-full h-9'>
-                                <UserInput state={fileDesctiption} setState={(e) => setFileDescription(e.target.value)} placeholder='Manual completo de processos internos da empresa'/>                                
+                                <UserInput state={fileDesctiption} setState={setFileDescription} placeholder={fileInfo.description}/>                                
                             </div>
                         </div>
 
@@ -48,14 +57,13 @@ const FileSettingsModal = ({setIsOpen} : FileModalProp) => {
                                 Cancel
                             </button>
                             <button 
-                                onClick={() => setIsOpen(false)}
+                                onClick={handleNewFile}
                                 className='bg-linear-to-r from-blue-400 to-fuchsia-400 hover:from-blue-500 hover:to-fuchsia-500 transition rounded-lg px-6 py-2 text-white font-medium'
                             >
                                 Salvar
                             </button>
                         </div>
                     </fieldset>
-
                 </DialogPanel>
             </div>        
         </>

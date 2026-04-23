@@ -30,7 +30,7 @@ const UserInput = ({state, setState, placeholder, Icon} : UserInputProps) => {
             )}
 
             <input 
-            className='w-full h-full focus:outline-none pl-4 outline-black placeholder-gray-400 text-sm md:text-md' type="text" 
+            className='w-full h-full focus:outline-none pl-4 outline-black placeholder-gray-400 text-black text-sm md:text-md' type="text" 
             value={state} 
             onChange={(e) => setState(e.target.value)}
             placeholder={placeholder}

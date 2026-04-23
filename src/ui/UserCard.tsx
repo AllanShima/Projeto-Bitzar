@@ -1,24 +1,18 @@
+import { Dialog } from '@headlessui/react';
 import React, { useState } from 'react'
-import { Dialog, DialogBackdrop } from '@headlessui/react'
-import { IoDocumentTextOutline } from "react-icons/io5";
-import { GoDotFill } from "react-icons/go";
-import { MdOutlineFileDownload } from "react-icons/md";
-import { MdOutlineEdit } from "react-icons/md";
-import { CgTrash } from "react-icons/cg";
-import FileSettingsModal from './FileSettingsModal';
+import { Toaster } from 'react-hot-toast';
 import FileDeleteModal from './FileDeleteModal';
-import toast from 'react-hot-toast';
-import type { File } from '@/interfaces/Interfaces';
+import FileSettingsModal from './FileSettingsModal';
+import { CgTrash } from 'react-icons/cg';
+import { MdOutlineEdit, MdOutlineFileDownload } from 'react-icons/md';
+import { GoDotFill } from 'react-icons/go';
+import { IoDocumentTextOutline } from 'react-icons/io5';
 
-interface FileCardProps {
-    file: File
-}
-
-const FileCard = ({file} : FileCardProps) => {
+const UserCard = () => {
     const [fileSettingsModal, setFileSettingsModal] = useState(false);
     const [fileDeleteModal, setFileDeleteModal] = useState(false);
 
-    const handleDownload = () => {
+    const downloadFile = () => {
         // toast.promise(
         //     saveSettings(settings),
         //     {
@@ -27,7 +21,6 @@ const FileCard = ({file} : FileCardProps) => {
         //         error: <b>Could not save.</b>,
         //     }
         // );
-        toast.success("Arquivo instalado com sucesso!");
     }
 
     return (
@@ -41,12 +34,12 @@ const FileCard = ({file} : FileCardProps) => {
                 </div>
                 {/* Main info */}
                 <div className='flex flex-col w-fit h-fit text-black space-y-2'>
-                    <h2 className='font-medium text-xl'>{file.name}</h2>
-                    <p className='text-gray-800'>{file.description}</p>
+                    <h2 className='font-medium text-xl'>Manual de Processos</h2>
+                    <p className='text-gray-800'>Manual completo de processos internos</p>
                     <span className='flex items-center space-x-4 text-gray-600 text-xs'>
-                        <p>{file.fileSize}</p>
+                        <p>2.5MB</p>
                         <GoDotFill className='w-1.5 h-1.5'/>
-                        <p>{file.createdAt}</p>
+                        <p>19/02/2026</p>
                     </span>
                 </div>            
             </span>
@@ -54,7 +47,7 @@ const FileCard = ({file} : FileCardProps) => {
             <div className='flex space-x-2'>
 
                 <button 
-                    onClick={handleDownload}
+                    onClick={() => downloadFile()}
                     className='w-fit h-fit p-1.5 rounded-md hover:bg-blue-50 transition duration-200'
                 >
                     <MdOutlineFileDownload className='w-5 h-5 text-blue-700'/>
@@ -76,13 +69,15 @@ const FileCard = ({file} : FileCardProps) => {
                 
             </div>
             <Dialog open={fileSettingsModal} onClose={() => setFileSettingsModal(false)}>
-                <FileSettingsModal fileInfo={file} setIsOpen={setFileSettingsModal}/>
+                <FileSettingsModal setIsOpen={setFileSettingsModal}/>
             </Dialog>
             <Dialog open={fileDeleteModal} onClose={() => setFileDeleteModal(false)}>
                 <FileDeleteModal setIsOpen={setFileDeleteModal}/>
             </Dialog>
+
+            <Toaster/>
         </div>
     )
 }
 
-export default FileCard
+export default UserCard

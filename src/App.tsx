@@ -8,8 +8,11 @@ import HomeHeader from "./pages/HomeHeader";
 import ChatPage from "./pages/ChatPage";
 import ArchivePage from "./pages/ArchivePage";
 import Login from "./pages/Login";
-import TeamInfoPage from "./pages/TeamInfoPage";
+import TeamInfoPage from "./pages/TeamPage";
 import Register from "./pages/Register";
+import Home from "./pages/Home";
+import { Toaster } from "react-hot-toast";
+import TeamRegisterPage from "./pages/TeamRegisterPage";
 
 export function App() {
   
@@ -23,30 +26,7 @@ export function App() {
     },
     {
       path: '/home',
-      element: (
-        <>
-          <HomeHeader/>
-          <Outlet/>
-        </>
-      ),
-      children: [
-        {
-          index: true, 
-          element: <Navigate to="chat" replace /> 
-        },
-        {
-          path: 'chat',
-          element: <ChatPage/>
-        },
-        {
-          path: 'archive',
-          element: <ArchivePage/>
-        },
-        {
-          path: 'info',
-          element: <TeamInfoPage/>
-        },
-      ]
+      element: <Home/>,
     },
     {
       path: '/login',
@@ -56,11 +36,16 @@ export function App() {
       path: '/register',
       element: <Register/>
     },
+    {
+      path: '/teamregister',
+      element: <TeamRegisterPage/>
+    },
   ]);
 
   return (
     <div className="flex flex-col w-screen h-screen bg-gray-100">
       <RouterProvider router={mainRouter} />
+      <Toaster/>
     </div>
   );
 }

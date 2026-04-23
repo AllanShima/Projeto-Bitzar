@@ -1,42 +1,15 @@
+import UploadFileModal from '@/ui/UploadFileModal'
+import UserCard from '@/ui/UserCard'
+import UserInput from '@/ui/UserInput'
+import { Dialog } from '@headlessui/react'
 import React, { useState } from 'react'
-import { MdOutlineUploadFile } from "react-icons/md";
-import { IoSearch } from "react-icons/io5";
-import FileCard from '@/ui/FileCard';
-import UserInput from '@/ui/UserInput';
-import { Dialog } from '@headlessui/react';
-import UploadFileModal from '@/ui/UploadFileModal';
-import toast, { Toaster } from 'react-hot-toast';
-import { DiVim } from 'react-icons/di';
-import { Files } from '@/assets/MockupData';
-import type { File } from '@/interfaces/Interfaces';
+import { Toaster } from 'react-hot-toast'
+import { IoSearch } from 'react-icons/io5'
+import { MdOutlineUploadFile } from 'react-icons/md'
 
-const ArchivePage = () => {
-
-// import { useQuery } from '@tanstack/react-query';
-
-// function ArchivePage() {
-//   // 'files' is the key for caching. 
-//   // fetchFiles is just your standard fetch() function.
-//   const { data, isLoading, error } = useQuery({ 
-//     queryKey: ['files'], 
-//     queryFn: fetchFiles 
-//   });
-
-//   if (isLoading) return <div>Loading...</div>;
-//   if (error) return <div>Error loading files!</div>;
-
-//   return (
-//     <div>
-//       {data.map(file => <FileCard key={file.id} file={file} />)}
-//     </div>
-//   );
-// }
-
-  const [files, setFiles] = useState<File[]>(Files);
-
-  const [uploadFileModal, setUploadFileModal] = useState(false);
+const TeamPage = () => {
+  const [newMemberModal, setNewMemberModal] = useState(false);
   const [searchText, setSearchText] = useState("");
-
   return (
     <div className='flex flex-col w-full h-full overflow-hidden bg-transparent pb-7'>
       {/* Upload and File Search Container */}
@@ -55,7 +28,7 @@ const ArchivePage = () => {
             </div>
             {/* Upload Button */}
             <button 
-              onClick={() => setUploadFileModal(true)}
+              onClick={() => setNewMemberModal(true)}
               className='flex w-fit h-fit px-4 py-2 bg-linear-to-r from-sky-500 to-fuchsia-500 rounded-xl hover:from-sky-600 hover:to-fuchsia-600 transition duration-200'>
               <span className='flex justify-center items-center space-x-3'>
                 <span>
@@ -76,18 +49,17 @@ const ArchivePage = () => {
 
       <div className='flex flex-col w-full h-full bg-transparent overflow-y-auto'>
         <div className='flex flex-col w-full h-full px-7'>
-          {files.map((file) => (
-            <div key={file.id}>
-              <FileCard file={file}/>
-            </div>
-          ))}
+          <UserCard/>
+          <UserCard/>
+          <UserCard/>
+          <UserCard/>
           {/* Spacer */}
           <span className='flex w-full h-10 p-2 bg-transparent'/>
         </div>
       </div>
 
-      <Dialog open={uploadFileModal} onClose={() => setUploadFileModal(false)}>
-        <UploadFileModal setIsOpen={setUploadFileModal}/>
+      <Dialog open={newMemberModal} onClose={() => setNewMemberModal(false)}>
+        <UploadFileModal setIsOpen={setNewMemberModal}/>
       </Dialog>
 
       <Toaster/>
@@ -95,4 +67,4 @@ const ArchivePage = () => {
   )
 }
 
-export default ArchivePage
+export default TeamPage

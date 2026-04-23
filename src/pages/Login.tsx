@@ -26,7 +26,7 @@ const Login = () => {
             navigate("/home");
         } catch (error){
             if (error instanceof FirebaseError) {
-                // Aqui o TS sabe que 'error' tem as propriedades 'code' e 'message'
+                // Aqui o TS sabe que 'error' tem as propriedades 'code' e 'message' (do proprio Firebase)
                 toast.error(error.message);
             } else {
                 // Trata erros que não são do Firebase (ex: erro de rede genérico)
@@ -42,8 +42,8 @@ const Login = () => {
             <div className='flex flex-col w-100 h-fit p-10 bg-white rounded-2xl'>
                 <fieldset className='flex flex-col w-full items-center space-y-30'>
                     <form 
-                    onSubmit={handleLogin}
-                    className='flex flex-col w-full items-center space-y-6'>
+                        onSubmit={handleLogin}
+                        className='flex flex-col w-full items-center space-y-6'>
                         <h1 className='w-fit font-bold text-black text-2xl'>
                             Login
                         </h1>

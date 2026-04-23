@@ -12,7 +12,6 @@ const Register = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    userName: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -73,8 +72,8 @@ const Register = () => {
                     <UserInputLabel state={formData.email} setState={(val) => handleChange("email", val)} placeholder='Digite seu email...' Icon={FaUser} label='Email'/>
                     <UserInputLabel state={formData.firstName} setState={(val) => handleChange("firstName", val)} placeholder='Digite seu nome...' Icon={FaUser} label='Nome'/>
                     <UserInputLabel state={formData.lastName} setState={(val) => handleChange("lastName", val)} placeholder='Digite seu sobrenome...' Icon={FaUser} label='Sobrenome'/>
-                    <UserInputLabel state={formData.password} setState={(val) => handleChange("password", val)} placeholder='Digite seu nome de usuário...' Icon={FaUnlockAlt} label='Senha'/>
-                    <UserInputLabel state={formData.confirmPass} setState={(val) => handleChange("confirmPass", val)} placeholder='Digite seu nome de usuário...' Icon={FaLock} label='Senha Novamente'/>
+                    <UserInputLabel state={formData.password} setState={(val) => handleChange("password", val)} placeholder='Digite sua senha...' Icon={FaUnlockAlt} label='Senha'/>
+                    <UserInputLabel state={formData.confirmPass} setState={(val) => handleChange("confirmPass", val)} placeholder='Digite sua senha novamente' Icon={FaLock} label='Digite a senha novamente'/>
 
                   </div>
 

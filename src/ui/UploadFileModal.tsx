@@ -9,6 +9,14 @@ interface UploadFileProp {
 
 const UploadFileModal = ({setIsOpen} : UploadFileProp) => {
     const [fileDescription, setFileDescription] = useState('');
+
+    const [loading, setLoading] = useState(false);
+
+    const uploadFile = () => {
+        // Adicionar novo arquivo
+        setIsOpen(false);
+    }
+
     return (
         <>
             <DialogBackdrop
@@ -28,7 +36,7 @@ const UploadFileModal = ({setIsOpen} : UploadFileProp) => {
                         </span>
 
                         {/* Caixa de Item */}
-                        <button className='flex flex-col items-center w-full h-fit p-10 outline-2 outline-dashed outline-purple-300 rounded-2xl'>
+                        <button className='flex flex-col items-center w-full h-fit p-10 outline-2 outline-dashed outline-purple-300 hover:outline-purple-400 hover:cursor-pointer transition duration-200 rounded-2xl'>
                             <span className='flex w-full justify-center'>
                                 <MdOutlineFileUpload className='w-18 h-18 text-purple-400'/>
                             </span>
@@ -56,7 +64,7 @@ const UploadFileModal = ({setIsOpen} : UploadFileProp) => {
                                 Cancel
                             </button>
                             <button 
-                                onClick={() => setIsOpen(false)}
+                                onClick={() => uploadFile()}
                                 className='bg-linear-to-r from-blue-400 to-fuchsia-400 hover:from-blue-500 hover:to-fuchsia-500 transition rounded-lg px-6 py-2 text-white font-medium'
                             >
                                 Upload

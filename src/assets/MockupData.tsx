@@ -1,6 +1,7 @@
+import type { File, User } from '@/interfaces/Interfaces'
 import React from 'react'
 
-const Files = [
+export const Files: File[] = [
     {
         id: "nvfjdnjsnvl",
         name: "Manual_de_Processos.pdf",
@@ -35,4 +36,37 @@ const Files = [
     }
 ]
 
-export default {Files}
+export const Users: User[]= [
+    {
+        id: "nvfjdnjsnvl",
+        firstName: "Allan",
+        lastName: "Shinhama",
+        email: "allanshinham@gmail.com",
+        password: "allna",
+        createdAt: "19/02/2026" 
+    },
+    {
+        id: "dcnsjncjiasc",
+        firstName: "Carlos",
+        lastName: "Eduardo",
+        email: "carloseduardo@gmail.com",
+        password: "belo",
+        createdAt: "19/03/2026" 
+    },
+    {
+        id: "kijdoiwnjdicdnjk",
+        firstName: "Emanuelly",
+        lastName: "Ferreira",
+        email: "emanuellyferreir@gmail.com",
+        password: "casa",
+        createdAt: "20/03/2024" 
+    },
+    {
+        id: "cdsonmcosmaskkoç",
+        firstName: "Manual_de_Processos.pdf",
+        lastName: "Manual de processos da empresa",
+        email: "./src/assets/file/06_08_24.pdf",
+        password: "shinhama",
+        createdAt: "19/02/2026" 
+    }
+]
