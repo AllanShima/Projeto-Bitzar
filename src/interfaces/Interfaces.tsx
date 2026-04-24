@@ -21,3 +21,13 @@ export interface User {
   password: string,
   createdAt: string
 }
+
+export interface Team {
+  id: string,
+  title: string,
+  description: string,
+  code: string,
+  owner: User,
+  members: User[],
+  createdAt: string,
+}

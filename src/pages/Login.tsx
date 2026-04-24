@@ -23,7 +23,7 @@ const Login = () => {
             setLoading(true);
             await signInWithEmailAndPassword(auth, userEmail, userPassword);
             toast.success('Usuário logado com sucesso!');
-            navigate("/home");
+            navigate("/teamregister");
         } catch (error){
             if (error instanceof FirebaseError) {
                 // Aqui o TS sabe que 'error' tem as propriedades 'code' e 'message' (do proprio Firebase)

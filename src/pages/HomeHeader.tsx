@@ -9,7 +9,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router';
 import { signOut } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
-import { MdExitToApp } from "react-icons/md";
+import { MdExitToApp, MdOutlineGroupAdd } from "react-icons/md";
 import TabButton from '@/ui/TabButton';
 
 interface HomeHeaderProps {
@@ -81,6 +81,10 @@ const HomeHeader = ({activeTab, setActiveTab} : HomeHeaderProps) => {
                     {/* Leave button */}
                     <div className='flex w-fit h-3/4 gap-1 my-auto'>
                         {/* Chat Tab button*/}
+                        <button onClick={() => {navigate("/teamregister")}} className='flex my-auto h-fit w-fit px-3 py-1 rounded-xl hover:bg-fuchsia-600 transition'>
+                            <MdOutlineGroupAdd className='my-auto mr-2 w-5 h-5'/>
+                            Criar/Entrar Grupo
+                        </button>
                         <button onClick={(e) => handleLogout(e)} className='flex my-auto h-fit w-fit px-3 py-1 rounded-xl hover:bg-fuchsia-600 transition'>
                             <MdExitToApp className='my-auto mr-2 w-5 h-5'/>
                             Sair

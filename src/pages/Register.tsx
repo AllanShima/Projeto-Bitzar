@@ -69,11 +69,11 @@ const Register = () => {
                   <div className='w-full grid grid-cols-2 grid-rows-3 gap-4'>
 
                     {/* <UserInputLabel state={formData.userName} setState={(val) => handleChange("userName", val)} placeholder='Digite seu nome de usuário...' Icon={FaUser} label='Nome de usuário'/> */}
-                    <UserInputLabel state={formData.email} setState={(val) => handleChange("email", val)} placeholder='Digite seu email...' Icon={FaUser} label='Email'/>
-                    <UserInputLabel state={formData.firstName} setState={(val) => handleChange("firstName", val)} placeholder='Digite seu nome...' Icon={FaUser} label='Nome'/>
-                    <UserInputLabel state={formData.lastName} setState={(val) => handleChange("lastName", val)} placeholder='Digite seu sobrenome...' Icon={FaUser} label='Sobrenome'/>
-                    <UserInputLabel state={formData.password} setState={(val) => handleChange("password", val)} placeholder='Digite sua senha...' Icon={FaUnlockAlt} label='Senha'/>
-                    <UserInputLabel state={formData.confirmPass} setState={(val) => handleChange("confirmPass", val)} placeholder='Digite sua senha novamente' Icon={FaLock} label='Digite a senha novamente'/>
+                    <UserInputLabel state={formData.email} setState={(y) => handleChange("email", y)} placeholder='Digite seu email...' Icon={FaUser} label='Email'/>
+                    <UserInputLabel state={formData.firstName} setState={(y) => handleChange("firstName", y)} placeholder='Digite seu nome...' Icon={FaUser} label='Nome'/>
+                    <UserInputLabel state={formData.lastName} setState={(y) => handleChange("lastName", y)} placeholder='Digite seu sobrenome...' Icon={FaUser} label='Sobrenome'/>
+                    <UserInputLabel state={formData.password} setState={(y) => handleChange("password", y)} placeholder='Digite sua senha...' Icon={FaUnlockAlt} label='Senha'/>
+                    <UserInputLabel state={formData.confirmPass} setState={(y) => handleChange("confirmPass", y)} placeholder='Digite sua senha novamente' Icon={FaLock} label='Digite a senha novamente'/>
 
                   </div>
 
