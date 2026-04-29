@@ -38,9 +38,15 @@ export const fileService = {
   },
   
   // Leitura de Todos os arquivos
-  async GetAllFiles() {
+  async getAllFiles() {
+
+  },
+
+  async updateFileById(fileId, updatedData) {
+
+  },
+
+  async deleteFileById(fileId) {
 
   }
-  
-  // Update/Delete...
 };
