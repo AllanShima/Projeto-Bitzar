@@ -31,7 +31,7 @@ bun start
 
 ---
 
-#### Extesões e Libraries
+#### Extesões e Bibliotecas
 - bun install firebase
 - bun install -g firebase-tools
 - bun install react-icons --save
@@ -39,6 +39,7 @@ bun start
 - bun install @headlessui/react
 - bun install react-hot-toast
 - npm install --save-dev jsdoc
+- bun install @tanstack/react-query
 
 ---
 

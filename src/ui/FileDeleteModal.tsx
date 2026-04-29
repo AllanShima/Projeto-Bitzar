@@ -4,9 +4,10 @@ import toast from 'react-hot-toast'
 
 interface FileModalProp {
     setIsOpen: Dispatch<SetStateAction<boolean>>
+    fileId: string
 }
 
-const FileDeleteModal = ({setIsOpen} : FileModalProp) => {
+const FileDeleteModal = ({fileId, setIsOpen} : FileModalProp) => {
     const handleDelete = () => {
         toast.success("Arquivo apagado com sucesso!");
         setIsOpen(false);

@@ -1,7 +1,7 @@
 export interface Message {
   role: 'user' | 'ai';
   content: string;
-  timestamp?: number;
+  createdAt?: Date;
 }
 
 export interface File {
@@ -27,7 +27,12 @@ export interface Team {
   title: string,
   description: string,
   code: string,
-  owner: User,
-  members: User[],
+  owner?: User,
+  members: TeamMember[],
   createdAt: string,
+}
+
+export interface TeamMember {
+  status: 'admin' | 'participant',
+  user?: User
 }

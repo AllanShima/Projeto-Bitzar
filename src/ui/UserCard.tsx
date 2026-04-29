@@ -1,27 +1,23 @@
 import { Dialog } from '@headlessui/react';
 import React, { useState } from 'react'
 import { Toaster } from 'react-hot-toast';
-import FileDeleteModal from './FileDeleteModal';
-import FileSettingsModal from './FileSettingsModal';
 import { CgTrash } from 'react-icons/cg';
-import { MdOutlineEdit, MdOutlineFileDownload } from 'react-icons/md';
+import { MdOutlineEdit } from 'react-icons/md';
 import { GoDotFill } from 'react-icons/go';
 import { IoDocumentTextOutline } from 'react-icons/io5';
+import type { User } from '@/interfaces/Interfaces';
+import UserSettingsModal from './UserSettingsModal';
+import UserDeleteModal from './UserDeleteModal';
 
-const UserCard = () => {
-    const [fileSettingsModal, setFileSettingsModal] = useState(false);
-    const [fileDeleteModal, setFileDeleteModal] = useState(false);
+interface UserCardProps {
+    user: User
+}
 
-    const downloadFile = () => {
-        // toast.promise(
-        //     saveSettings(settings),
-        //     {
-        //         loading: 'Saving...',
-        //         success: <b>Settings saved!</b>,
-        //         error: <b>Could not save.</b>,
-        //     }
-        // );
-    }
+const UserCard = ({user} : UserCardProps) => {
+    const [userSettingsModal, setUserSettingsModal] = useState(false);
+    const [userDeleteModal, setUserDeleteModal] = useState(false);
+
+    const username = user.firstName + " " + user.lastName;
 
     return (
         <div className='flex w-full h-fit rounded-2xl p-5 mb-7 justify-between bg-white hover:shadow-lg transition'>
@@ -34,45 +30,38 @@ const UserCard = () => {
                 </div>
                 {/* Main info */}
                 <div className='flex flex-col w-fit h-fit text-black space-y-2'>
-                    <h2 className='font-medium text-xl'>Manual de Processos</h2>
-                    <p className='text-gray-800'>Manual completo de processos internos</p>
+                    <h2 className='font-medium text-xl'>{username}</h2>
+                    <p className='text-gray-800'>{user.email}</p>
                     <span className='flex items-center space-x-4 text-gray-600 text-xs'>
-                        <p>2.5MB</p>
-                        <GoDotFill className='w-1.5 h-1.5'/>
-                        <p>19/02/2026</p>
+                        <p>Cadastrado em: {user.createdAt}</p>
+                        <GoDotFill className='w-1.5 h-1.5'/>0
+                         
+                        <p></p>
                     </span>
                 </div>            
             </span>
 
             <div className='flex space-x-2'>
-
-                <button 
-                    onClick={() => downloadFile()}
-                    className='w-fit h-fit p-1.5 rounded-md hover:bg-blue-50 transition duration-200'
-                >
-                    <MdOutlineFileDownload className='w-5 h-5 text-blue-700'/>
-                </button>
-
                 <button
-                    onClick={() => setFileSettingsModal(true)}
+                    onClick={() => setUserSettingsModal(true)}
                     className='w-fit h-fit p-1.5 rounded-md hover:bg-fuchsia-50 transition duration-200'
                 >
                     <MdOutlineEdit className='w-5 h-5 text-fuchsia-700'/>
                 </button>
 
                 <button 
-                    onClick={() => setFileDeleteModal(true)}
+                    onClick={() => setUserDeleteModal(true)}
                     className='w-fit h-fit p-1.5 rounded-md hover:bg-red-50 transition duration-200'
                 >
                     <CgTrash className='w-5 h-5 text-red-700'/>
                 </button>
                 
             </div>
-            <Dialog open={fileSettingsModal} onClose={() => setFileSettingsModal(false)}>
-                <FileSettingsModal setIsOpen={setFileSettingsModal}/>
+            <Dialog open={userSettingsModal} onClose={() => setUserSettingsModal(false)}>
+                <UserSettingsModal userInfo={user} setIsOpen={setUserSettingsModal}/>
             </Dialog>
-            <Dialog open={fileDeleteModal} onClose={() => setFileDeleteModal(false)}>
-                <FileDeleteModal setIsOpen={setFileDeleteModal}/>
+            <Dialog open={userDeleteModal} onClose={() => setUserDeleteModal(false)}>
+                <UserDeleteModal userUid={user.id} setIsOpen={setUserDeleteModal}/>
             </Dialog>
 
             <Toaster/>

@@ -1,15 +1,21 @@
+import NewUserModal from '@/ui/NewUserModal'
 import UploadFileModal from '@/ui/UploadFileModal'
 import UserCard from '@/ui/UserCard'
 import UserInput from '@/ui/UserInput'
 import { Dialog } from '@headlessui/react'
+import type { User } from 'firebase/auth'
 import React, { useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { IoSearch } from 'react-icons/io5'
 import { MdOutlineUploadFile } from 'react-icons/md'
+import { Users } from '@/assets/MockupData';
 
 const TeamPage = () => {
+  const [users, setUsers] = useState<User[]>(Users);
+
   const [newMemberModal, setNewMemberModal] = useState(false);
   const [searchText, setSearchText] = useState("");
+
   return (
     <div className='flex flex-col w-full h-full overflow-hidden bg-transparent pb-7'>
       {/* Upload and File Search Container */}
@@ -20,10 +26,10 @@ const TeamPage = () => {
             {/* Title */}
             <div className='flex flex-col'>
               <h2 className='font-bold bg-linear-to-r from-sky-600 to-fuchsia-600 text-transparent bg-clip-text text-2xl'>
-                Gerenciamento de Arquivos
+                Gerenciamento do Grupo
               </h2>
               <p className='font-normal text-gray-500'>
-                Gerencie os documentos PDF utilizados pelo copiloto
+                Gerencie os os usuários atuais de seu grupo
               </p>
             </div>
             {/* Upload Button */}
@@ -35,31 +41,32 @@ const TeamPage = () => {
                   <MdOutlineUploadFile className='w-4.5 h-4.5 my-auto'/>
                 </span>
                 <p className='font-medium text-white'>
-                  Upload PDF
+                  Novo Usuário
                 </p>
               </span>
             </button>
           </div>
           {/* Search Bar */}
           <div className='flex w-full h-10'>
-            <UserInput state={searchText} setState={setSearchText} placeholder="Pesquisar arquivos..." Icon={IoSearch}/>  
+            <UserInput state={searchText} setState={setSearchText} placeholder="Pesquisar membros..." Icon={IoSearch}/>  
           </div>
         </div>        
       </div>
 
       <div className='flex flex-col w-full h-full bg-transparent overflow-y-auto'>
         <div className='flex flex-col w-full h-full px-7'>
-          <UserCard/>
-          <UserCard/>
-          <UserCard/>
-          <UserCard/>
+          {users.map((user) => (
+            <div key={user.uid}>
+              <UserCard user={user}/>              
+            </div>
+          ))}
           {/* Spacer */}
           <span className='flex w-full h-10 p-2 bg-transparent'/>
         </div>
       </div>
 
       <Dialog open={newMemberModal} onClose={() => setNewMemberModal(false)}>
-        <UploadFileModal setIsOpen={setNewMemberModal}/>
+        <NewUserModal setIsOpen={setNewMemberModal}/>
       </Dialog>
 
       <Toaster/>

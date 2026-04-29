@@ -1,4 +1,4 @@
-import React, { useState, type FormEvent, type SubmitEvent } from 'react'
+import React, { useEffect, useState, type FormEvent, type SubmitEvent } from 'react'
 import { RiRobot3Line } from "react-icons/ri";
 import { IoIosSend } from "react-icons/io";
 import toast, { Toaster } from 'react-hot-toast';
@@ -11,7 +11,13 @@ const ChatPage = () => {
   const [userText, setUserText] = useState("");
   const [containsText, setContainsText] = useState(false);
   const [loadingResponse, setLoadingResponse] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: 'ai',
+      content: "Olá, como eu posso te ajudar?",
+      createdAt: new Date()
+    }
+  ]);
 
   const handleTextSubmit = async (e : FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // impede refresh da página
@@ -22,6 +28,7 @@ const ChatPage = () => {
     const newUserMessage: Message = {
       role: 'user',
       content: userText,
+      createdAt: new Date()
     }
     setMessages((prev) => [...prev, newUserMessage]);
     setUserText("");

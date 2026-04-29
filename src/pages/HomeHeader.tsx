@@ -11,6 +11,7 @@ import { signOut } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { MdExitToApp, MdOutlineGroupAdd } from "react-icons/md";
 import TabButton from '@/ui/TabButton';
+import UserStatusTag from '@/ui/UserStatusTag';
 
 interface HomeHeaderProps {
     activeTab: string,
@@ -72,11 +73,7 @@ const HomeHeader = ({activeTab, setActiveTab} : HomeHeaderProps) => {
                     {/* User Type indicator */}
                     <div className='flex w-fit h-fit gap-2 my-auto'>
                         {/* Chat Tab button */}
-                        <div className="flex w-fit h-fit bg-fuchsia-700 text-white items-center rounded-xl px-3 py-1 font-medium">
-                            <p className='h-fit font-light'>
-                                Admin
-                            </p>
-                        </div> 
+                        <UserStatusTag teamMember={}/>
                     </div>
                     {/* Leave button */}
                     <div className='flex w-fit h-3/4 gap-1 my-auto'>

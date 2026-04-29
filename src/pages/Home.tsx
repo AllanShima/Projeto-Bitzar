@@ -4,6 +4,7 @@ import ChatPage from './ChatPage';
 import ArchivePage from './ArchivePage';
 import TeamInfoPage from './TeamPage';
 
+
 const Home = () => {
     const [activeTab, setActiveTab] = useState('chat');
     return (

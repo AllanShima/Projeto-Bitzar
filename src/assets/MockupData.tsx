@@ -1,4 +1,4 @@
-import type { File, User } from '@/interfaces/Interfaces'
+import type { File, Team, TeamMember, User } from '@/interfaces/Interfaces'
 import React from 'react'
 
 export const Files: File[] = [
@@ -36,7 +36,7 @@ export const Files: File[] = [
     }
 ]
 
-export const Users: User[]= [
+export const Users: User[] = [
     {
         id: "nvfjdnjsnvl",
         firstName: "Allan",
@@ -68,5 +68,36 @@ export const Users: User[]= [
         email: "./src/assets/file/06_08_24.pdf",
         password: "shinhama",
         createdAt: "19/02/2026" 
+    }
+]
+
+const TeamMembers: TeamMember[] = [
+    {
+        status: 'admin',
+        user: Users[0]
+    },
+    {
+        status: 'admin',
+        user: Users[1]
+    },
+    {
+        status: 'admin',
+        user: Users[2]
+    },
+    {
+        status: 'admin',
+        user: Users[3]
+    },
+]
+
+export const Teams: Team[] = [
+    {
+        id: "nvjfdsnvkjfs",
+        title: "Setor de Desenvolvimento Front-end",
+        description: "Chatbot com suporte a documentos front-end da empresa",
+        code: "chave1",
+        owner: Users[1],
+        members: TeamMembers,
+        createdAt: "09/07/2025"
     }
 ]

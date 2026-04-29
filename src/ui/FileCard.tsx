@@ -79,7 +79,7 @@ const FileCard = ({file} : FileCardProps) => {
                 <FileSettingsModal fileInfo={file} setIsOpen={setFileSettingsModal}/>
             </Dialog>
             <Dialog open={fileDeleteModal} onClose={() => setFileDeleteModal(false)}>
-                <FileDeleteModal setIsOpen={setFileDeleteModal}/>
+                <FileDeleteModal fileId={file.id} setIsOpen={setFileDeleteModal}/>
             </Dialog>
         </div>
     )
