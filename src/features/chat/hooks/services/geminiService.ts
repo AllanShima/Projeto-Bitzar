@@ -2,7 +2,7 @@
 
 // 🚀 Mudança definitiva para o modelo estável atual da linha Flash
 const GEMINI_MODEL = 'gemini-2.0-flash';
-const GEMINI_API_KEY = 'minha_api';
+const GEMINI_API_KEY = process.env.BUN_PUBLIC_GEMINI_KEY;
 
 export const callGeminiAPI = async ({ systemPrompt, userPrompt }: { systemPrompt: string, userPrompt: string }): Promise<string> => {
   if (!GEMINI_API_KEY) {

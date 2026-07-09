@@ -8,7 +8,7 @@ import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_KEY,
+  apiKey: process.env.BUN_PUBLIC_FIREBASE_KEY,
   authDomain: "bitzar-docpilot.firebaseapp.com",
   projectId: "bitzar-docpilot",
   storageBucket: "bitzar-docpilot.firebasestorage.app",
